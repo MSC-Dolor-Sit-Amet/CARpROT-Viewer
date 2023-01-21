@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
-import App from './App';
 import './index.css';
+import Start from './views/Start/Start';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,14 +11,7 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-    children: [
-      // {
-      //   path: 'team',
-      //   element: <Team />,
-      //   loader: teamLoader,
-      // },
-    ],
+    element: <Start />,
   },
 ]);
 
