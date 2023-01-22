@@ -1,5 +1,5 @@
-import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Start from './views/Start';
 import Header from './components/Header';
 
