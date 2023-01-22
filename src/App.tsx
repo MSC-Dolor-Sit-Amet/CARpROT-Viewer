@@ -1,14 +1,14 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Start from './views/Start';
 import Header from './components/Header';
+import Home from './views/Home';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Start />} />
+        <Route path="/" element={<Home />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
