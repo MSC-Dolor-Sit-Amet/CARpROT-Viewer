@@ -14,8 +14,8 @@ function Output({ resultSequences }: InputOutputProps) {
           <Text fontSize="lg" as="b">
             Frame {index + 1}
           </Text>
-          <Code wordBreak="break-all">
-            <Text>{resultSequence}</Text>
+          <Code wordBreak="break-all" fontSize="1.1em" borderRadius="md">
+            <Text fontFamily="Red Hat Mono">{resultSequence}</Text>
           </Code>
         </Stack>
       ))}

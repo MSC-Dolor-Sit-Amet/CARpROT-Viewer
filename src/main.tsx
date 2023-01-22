@@ -14,21 +14,17 @@ const config: ThemeConfig = {
 const theme = extendTheme(
   { config },
   {
-    fonts: {
-      body: 'Red Hat Display',
-    },
     colors: {
       primary: baseTheme.colors.blue,
     },
     styles: {
-      global: (props: StyleFunctionProps) => {
-        return {
-          body: {
-            color: mode('gray.800', 'whiteAlpha.900')(props),
-            bg: mode('white', 'gray.800')(props),
-          },
-        };
-      },
+      global: (props: StyleFunctionProps) => ({
+        body: {
+          color: mode('gray.800', 'whiteAlpha.900')(props),
+          bg: mode('white', 'gray.800')(props),
+          fontFamily: 'Red Hat Display',
+        },
+      }),
     },
   },
   withDefaultColorScheme({
