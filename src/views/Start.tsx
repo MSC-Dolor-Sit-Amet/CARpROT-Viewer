@@ -1,6 +1,6 @@
 import React from "react";
 import { Checkbox, Stack, Text, Textarea } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react';
 
 function Start() {
   let [value, setValue] = React.useState('')
@@ -10,13 +10,13 @@ function Start() {
     setValue(inputValue)
   }
   return (
-    <Stack direction='column' spacing={4} align='left'>
+    <Stack direction='column' spacing={4} align='left' padding='5'>
       <Stack direction='row' spacing={2}>
         <Text mb='8px'>Sequence:</Text>
         <Textarea
           value={value}
           onChange={handleInputChange}
-          placeholder='Here is a sample placeholder'
+          placeholder='Enter sequence here...'
           size='lg'
         />
       </Stack>
@@ -28,7 +28,7 @@ function Start() {
           Reverse
         </Checkbox>
       </Stack>
-      <Button colorScheme='blue' width='min-content'>Translate</Button>
+      <Button width='min-content'>Translate</Button>
     </Stack>
   )
 }
