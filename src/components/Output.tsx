@@ -11,7 +11,7 @@ function Output({ resultSequences }: InputOutputProps) {
         Output
       </Text>
       {resultSequences.map((resultSequence, index) => (
-        <Stack key={resultSequence}>
+        <Stack key={index}>
           <Divider />
           <Text fontSize="lg" as="b">
             Frame {index + 1}
