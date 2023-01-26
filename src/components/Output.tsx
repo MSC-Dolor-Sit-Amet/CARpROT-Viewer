@@ -1,10 +1,12 @@
 import React from 'react';
-import { Code, Divider, Stack, Text } from '@chakra-ui/react';
+import { Code, Divider, Stack, Text, useColorMode } from '@chakra-ui/react';
 import InputOutputProps from '../types/InputOutputProps';
 
 function Output({ resultSequences }: InputOutputProps) {
+  const { colorMode } = useColorMode();
+
   return (
-    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor="whiteAlpha.100">
+    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colorMode === 'light' ? 'blue.50' : 'whiteAlpha.100'}>
       <Text fontSize="xl" as="b">
         Output
       </Text>
