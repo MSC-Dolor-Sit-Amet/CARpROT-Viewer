@@ -26,5 +26,6 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': 'off',
+    'linebreak-style': 0,
   },
 };

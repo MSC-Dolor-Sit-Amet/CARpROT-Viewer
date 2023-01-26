@@ -24,7 +24,7 @@ function Input({ sequence, handleSequenceChange, directions, setDirections, meth
             onChange={e =>
               setDirections({
                 ...directions,
-                forward: e.target.value === 'forward',
+                forward: e.target.checked,
               })
             }
           >
@@ -36,7 +36,7 @@ function Input({ sequence, handleSequenceChange, directions, setDirections, meth
             onChange={e =>
               setDirections({
                 ...directions,
-                reverse: e.target.value === 'reverse',
+                reverse: e.target.checked,
               })
             }
           >
