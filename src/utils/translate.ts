@@ -32,18 +32,18 @@ const DNAToAminoAcids = newSequence => {
   return aminoAcids;
 };
 
-const aminoAcidsToPeptides = (aminoAcids) => {
+const aminoAcidsToPeptides = aminoAcids => {
   const peptides: string[] = [];
 
   aminoAcids.forEach(i => {
     const peptide = i.match(/M.*?-/g);
     if (peptide) {
-     peptides.push(...peptide);
+      peptides.push(peptide);
     }
   });
 
   return peptides;
-}
+};
 
 const translate = (sequence: string, direction: InputOutputProps['directions'], method: InputOutputProps['method']) => {
   const newSequence = sequence
@@ -68,11 +68,9 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
     aminoAcids.push(...DNAToAminoAcids(newSequence.split('').reverse().join('')));
   }
 
-  const peptides = aminoAcidsToPeptides(aminoAcids);
+  const frames = aminoAcidsToPeptides(aminoAcids);
 
-  return peptides
+  return frames;
 };
-
-
 
 export default translate;
