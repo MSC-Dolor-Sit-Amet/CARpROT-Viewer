@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import * as codonsDict from './codons.json';
 import InputOutputProps from '../types/InputOutputProps';
 
@@ -10,7 +9,7 @@ interface CodonsDictType {
   };
 }
 
-const DNAToAminoAcids = newSequence => {
+const convertToAminoAcids = newSequence => {
   // join every 3 codon positions for 3 variants
   const codons: { [key: string]: string[][] } = {};
   for (let i = 0; i < 3; i += 1) {
@@ -32,19 +31,6 @@ const DNAToAminoAcids = newSequence => {
   return aminoAcids;
 };
 
-const aminoAcidsToPeptides = aminoAcids => {
-  const peptides: string[] = [];
-
-  aminoAcids.forEach(i => {
-    const peptide = i.match(/M.*?-/g);
-    if (peptide) {
-      peptides.push(peptide);
-    }
-  });
-
-  return peptides;
-};
-
 const translate = (sequence: string, direction: InputOutputProps['directions'], method: InputOutputProps['method']) => {
   const newSequence = sequence
     // remove line breaks
@@ -58,19 +44,17 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
     // join back into string
     .join('');
 
-  const aminoAcids: string[] = [];
+  let aminoAcids: string[] = [];
 
   if (direction.forward) {
-    aminoAcids.push(...DNAToAminoAcids(newSequence));
+    aminoAcids = aminoAcids.concat(convertToAminoAcids(newSequence));
   }
   if (direction.reverse) {
     // run translation on reversed sequence
-    aminoAcids.push(...DNAToAminoAcids(newSequence.split('').reverse().join('')));
+    aminoAcids = aminoAcids.concat(convertToAminoAcids(newSequence.split('').reverse().join('')));
   }
 
-  const frames = aminoAcidsToPeptides(aminoAcids);
-
-  return frames;
+  return aminoAcids;
 };
 
 export default translate;
