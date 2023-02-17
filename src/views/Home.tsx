@@ -12,7 +12,7 @@ function Home() {
 
   const [method, setMethod] = React.useState('2');
 
-  const [resultSequences, setResultSequences] = React.useState<resultSequence[]>([]);
+  const [resultSequences, setResultSequences] = React.useState<string[]>([]);
 
   const handleTranslate = () => {
     const proteins = translate(sequence, directions, method);
