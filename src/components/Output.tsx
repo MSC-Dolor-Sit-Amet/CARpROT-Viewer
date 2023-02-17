@@ -14,7 +14,7 @@ function Output({ resultSequences }: InputOutputProps) {
         <Stack key={index}>
           <Divider />
           <Text fontSize="lg" as="b">
-            Peptide {index + 1}
+            Protein {index + 1}
           </Text>
           <Code wordBreak="break-all" fontSize="1.1em" borderRadius="md">
             <Text fontFamily="Red Hat Mono">{resultSequence}</Text>

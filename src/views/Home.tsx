@@ -12,11 +12,17 @@ function Home() {
 
   const [method, setMethod] = React.useState('2');
 
-  const [resultSequences, setResultSequences] = React.useState<string[]>([]);
+  const [resultSequences, setResultSequences] = React.useState<resultSequence[]>([]);
 
   const handleTranslate = () => {
-    const res = translate(sequence, directions, method);
-    setResultSequences(res);
+    const proteins = translate(sequence, directions, method);
+
+    // update values when fetching ends
+    Promise.all(proteins).then(res => {
+    setResultSequences(
+        res.filter(n => n) // filter out empty elements
+      );
+    });
   };
 
   const props = {

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import * as codonsDict from './codons.json';
 import InputOutputProps from '../types/InputOutputProps';
+import getProteinName from './api';
 
 interface CodonsDictType {
   [key: string]: {
@@ -36,14 +37,8 @@ const aminoAcidsToPeptides = aminoAcids => {
   const peptides: string[] = [];
 
   aminoAcids.forEach(i => {
-    const peptide = i.match(/M.*?-/g);
+    const peptide = i.match(/M.*?(?=-)/g); // regex match sequences between 'M' (including) and '-' (excluding)
     if (peptide) {
-      // remove last `-` from peptide if present
-      peptide.forEach((p, index) => {
-        if (p[p.length - 1] === '-') {
-          peptide[index] = p.slice(0, -1);
-        }
-      });
       // add to peptides array
       peptides.push(...peptide);
     }
@@ -77,7 +72,13 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
 
   const peptides = aminoAcidsToPeptides(aminoAcids);
 
-  return peptides;
+  const proteins: string[] = peptides
+                            .filter(peptide => peptide.length >= 100)
+                            .map(peptide => {
+                              return getProteinName(peptide) // substitute peptides for proteins
+                            })
+
+  return proteins;
 };
 
 export default translate;
