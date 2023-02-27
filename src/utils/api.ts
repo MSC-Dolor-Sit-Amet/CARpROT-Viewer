@@ -33,6 +33,7 @@ async function getProteinName(peptide: string) {
 
     return data.result_set[0].identifier;
   }
+  return null;
 }
 
 export default getProteinName;

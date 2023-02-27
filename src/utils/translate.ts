@@ -73,10 +73,10 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
   const peptides = aminoAcidsToPeptides(aminoAcids);
 
   const proteins: string[] = peptides
-                            .filter(peptide => peptide.length >= 100)
-                            .map(peptide => {
-                              return getProteinName(peptide) // substitute peptides for proteins
-                            })
+    .filter(peptide => peptide.length >= 100)
+    .map(peptide => {
+      return getProteinName(peptide); // substitute peptides for proteins
+    });
 
   return proteins;
 };

@@ -19,8 +19,8 @@ function Home() {
 
     // update values when fetching ends
     Promise.all(proteins).then(res => {
-    setResultSequences(
-        res.filter(n => n) // filter out empty elements
+      setResultSequences(
+        res.filter(n => n), // filter out empty elements
       );
     });
   };
