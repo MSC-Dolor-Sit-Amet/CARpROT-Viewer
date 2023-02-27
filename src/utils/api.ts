@@ -31,7 +31,7 @@ async function getProteinName(peptide: string) {
   if (response.status === 200) {
     const data = await response.json();
 
-    return data.result_set[0].identifier;
+    return data.result_set[0].identifier.substring(0, 4);
   }
   return null;
 }
