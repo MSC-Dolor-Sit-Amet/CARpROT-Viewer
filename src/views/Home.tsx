@@ -3,6 +3,7 @@ import { Stack } from '@chakra-ui/react';
 import Input from '../components/Input';
 import Output from '../components/Output';
 import translate from '../utils/translate';
+import Viewer from '../components/Viewer';
 
 function Home() {
   const [sequence, setSequence] = React.useState('');
@@ -42,6 +43,7 @@ function Home() {
     <Stack direction="column" spacing={4} maxWidth="1000" margin="30px auto" borderRadius="lg">
       <Input {...props} />
       <Output {...props} />
+      <Viewer {...props} />
     </Stack>
   );
 }
