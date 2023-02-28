@@ -11,12 +11,10 @@ function Home() {
 
   const [directions, setDirections] = React.useState({ forward: true, reverse: true });
 
-  const [method, setMethod] = React.useState('2');
-
   const [resultSequences, setResultSequences] = React.useState<string[]>([]);
 
   const handleTranslate = () => {
-    const proteins = translate(sequence, directions, method);
+    const proteins = translate(sequence, directions);
 
     // update values when fetching ends
     Promise.all(proteins).then(res => {
@@ -31,8 +29,6 @@ function Home() {
     setSequence,
     directions,
     setDirections,
-    method,
-    setMethod,
     resultSequences,
     setResultSequences,
     handleSequenceChange,

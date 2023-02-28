@@ -45,17 +45,6 @@ function Input({ sequence, handleSequenceChange, directions, setDirections, meth
         </Stack>
       </Stack>
 
-      <Stack direction="column" spacing={2}>
-        <Text as="b">Output format:</Text>
-        <RadioGroup value={method} onChange={setMethod}>
-          <Stack spacing="1" direction="column">
-            <Radio value="1">Verbose: Met, Stop, spaces between residues</Radio>
-            <Radio value="2">Compact: M, -, no spaces</Radio>
-            <Radio value="3">Includes nucleotide sequence</Radio>
-            <Radio value="4">Includes nucleotide sequence, no spaces</Radio>
-          </Stack>
-        </RadioGroup>
-      </Stack>
       <Button width="min-content" onClick={handleTranslate}>
         Translate
       </Button>

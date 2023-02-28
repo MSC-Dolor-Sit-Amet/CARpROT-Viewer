@@ -11,7 +11,7 @@ interface CodonsDictType {
   };
 }
 
-const DNAToAminoAcids = newSequence => {
+const DNAToAminoAcids = (newSequence: string) => {
   // join every 3 codon positions for 3 variants
   const codons: { [key: string]: string[][] } = {};
   for (let i = 0; i < 3; i += 1) {
@@ -33,7 +33,7 @@ const DNAToAminoAcids = newSequence => {
   return aminoAcids;
 };
 
-const aminoAcidsToPeptides = aminoAcids => {
+const aminoAcidsToPeptides = (aminoAcids: string[]) => {
   const peptides: string[] = [];
 
   aminoAcids.forEach(i => {
@@ -47,7 +47,7 @@ const aminoAcidsToPeptides = aminoAcids => {
   return peptides;
 };
 
-const translate = (sequence: string, direction: InputOutputProps['directions'], method: InputOutputProps['method']) => {
+const translate = (sequence: string, direction: InputOutputProps['directions']) => {
   const newSequence = sequence
     // remove line breaks
     .replace(/(\r\n|\n|\r)/gm, '')
@@ -66,24 +66,25 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
     aminoAcids.push(...DNAToAminoAcids(newSequence));
   }
   if (direction.reverse) {
-  	// run translation on reversed sequence
-  	aminoAcids
-  		.push(...DNAToAminoAcids(
-  			newSequence
-  			.split('')
-  			.reverse()
-  			.join('')
-  			// some stackoverflow magic to switch A-U and C-G
-  			// https://stackoverflow.com/questions/10726638/how-do-you-map-replace-characters-in-javascript-similar-to-the-tr-function-in
-  			.replace(/[AUCG]/g, function(m) {
-  				return {
-  					'A': 'U',
-  					'U': 'A',
-  					'C': 'G',
-  					'G': 'C'
-  				} [m]
-  			})
-  		));
+    // run translation on reversed sequence
+    aminoAcids.push(
+      ...DNAToAminoAcids(
+        newSequence
+          .split('')
+          .reverse()
+          .join('')
+          // some stackoverflow magic to switch A-U and C-G
+          // https://stackoverflow.com/questions/10726638/how-do-you-map-replace-characters-in-javascript-similar-to-the-tr-function-in
+          .replace(/[AUCG]/g, function(m) {
+            return {
+              A: 'U',
+              U: 'A',
+              C: 'G',
+              G: 'C',
+            }[m];
+          }),
+      ),
+    );
   }
 
   const peptides = aminoAcidsToPeptides(aminoAcids);
