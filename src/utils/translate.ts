@@ -47,7 +47,7 @@ const aminoAcidsToPeptides = aminoAcids => {
   return peptides;
 };
 
-const translate = (sequence: string, direction: InputOutputProps['directions'], method: InputOutputProps['method']) => {
+const translate = (sequence: string, direction: InputOutputProps['directions']) => {
   const newSequence = sequence
     // remove line breaks
     .replace(/(\r\n|\n|\r)/gm, '')
@@ -66,29 +66,30 @@ const translate = (sequence: string, direction: InputOutputProps['directions'], 
     aminoAcids.push(...DNAToAminoAcids(newSequence));
   }
   if (direction.reverse) {
-  	// run translation on reversed sequence
-  	aminoAcids
-  		.push(...DNAToAminoAcids(
-  			newSequence
-  			.split('')
-  			.reverse()
-  			.join('')
-  			// some stackoverflow magic to switch A-U and C-G
-  			// https://stackoverflow.com/questions/10726638/how-do-you-map-replace-characters-in-javascript-similar-to-the-tr-function-in
-  			.replace(/[AUCG]/g, function(m) {
-  				return {
-  					'A': 'U',
-  					'U': 'A',
-  					'C': 'G',
-  					'G': 'C'
-  				} [m]
-  			})
-  		));
+    // run translation on reversed sequence
+    aminoAcids.push(
+      ...DNAToAminoAcids(
+        newSequence
+          .split('')
+          .reverse()
+          .join('')
+          // some stackoverflow magic to switch A-U and C-G
+          // https://stackoverflow.com/questions/10726638/how-do-you-map-replace-characters-in-javascript-similar-to-the-tr-function-in
+          .replace(/[AUCG]/g, m => {
+            return {
+              A: 'U',
+              U: 'A',
+              C: 'G',
+              G: 'C',
+            }[m];
+          }),
+      ),
+    );
   }
 
   const peptides = aminoAcidsToPeptides(aminoAcids);
 
-  const proteins: string[] = peptides
+  const proteins: Promise<string>[] = peptides
     .filter(peptide => peptide.length >= 100)
     .map(peptide => {
       return getProteinName(peptide); // substitute peptides for proteins

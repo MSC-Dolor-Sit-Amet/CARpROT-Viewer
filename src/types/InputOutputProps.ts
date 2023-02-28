@@ -1,14 +1,29 @@
-interface InputOutputProps {
-  sequence: string;
-  setSequence: React.Dispatch<React.SetStateAction<string>>;
-  directions: { forward: boolean; reverse: boolean };
-  setDirections: React.Dispatch<React.SetStateAction<{ forward: boolean; reverse: boolean }>>;
-  method: string;
-  setMethod: React.Dispatch<React.SetStateAction<string>>;
-  resultSequences: string[];
-  setResultSequences: React.Dispatch<React.SetStateAction<string[]>>;
-  handleSequenceChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  handleTranslate: () => void;
+type sequenceType = string;
+
+type directionsType = { forward: boolean; reverse: boolean };
+type setDirectionsType = React.Dispatch<React.SetStateAction<directionsType>>;
+
+type resultProteinsType = string[];
+
+type handleSequenceChangeType = (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+
+type handleTranslateType = () => void;
+
+type selectedProteinIndexType = number;
+type setSelectedProteinIndexType = React.Dispatch<React.SetStateAction<selectedProteinIndexType>>;
+
+interface InputProps {
+  sequence: sequenceType;
+  directions: directionsType;
+  setDirections: setDirectionsType;
+  handleSequenceChange: handleSequenceChangeType;
+  handleTranslate: handleTranslateType;
 }
 
-export default InputOutputProps;
+interface OutputProps {
+  resultProteins: resultProteinsType;
+  selectedProteinIndex: selectedProteinIndexType;
+  setSelectedProteinIndex: setSelectedProteinIndexType;
+}
+
+export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinsType };

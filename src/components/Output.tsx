@@ -1,26 +1,33 @@
-import React from 'react';
-import { Code, Divider, Stack, Text, useColorMode } from '@chakra-ui/react';
-import InputOutputProps from '../types/InputOutputProps';
+import React, { useEffect } from 'react';
+import { Divider, Select, Stack, Text, useColorMode } from '@chakra-ui/react';
+import { OutputProps } from '../types/InputOutputProps';
 
-function Output({ resultSequences }: InputOutputProps) {
+function Output({ resultProteins, selectedProteinIndex, setSelectedProteinIndex }: OutputProps) {
   const { colorMode } = useColorMode();
+
+  const ref123 = React.useRef<HTMLSelectElement>(null);
 
   return (
     <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colorMode === 'light' ? 'blue.50' : 'whiteAlpha.100'}>
       <Text fontSize="xl" as="b">
         Output
       </Text>
-      {resultSequences.map((resultSequence, index) => (
-        <Stack key={index}>
-          <Divider />
-          <Text fontSize="lg" as="b">
-            Protein {index + 1}
-          </Text>
-          <Code wordBreak="break-all" fontSize="1.1em" borderRadius="md">
-            <Text fontFamily="Red Hat Mono">{resultSequence}</Text>
-          </Code>
-        </Stack>
-      ))}
+      <Divider />
+      <Select
+        ref={ref123}
+        placeholder="Select protein"
+        onChange={e => {
+          const val = e.target.value;
+          if (val === '') return;
+          setSelectedProteinIndex(Number(val));
+        }}
+      >
+        {resultProteins.map((resultSequence, index) => (
+          <option key={resultSequence} value={index}>
+            {resultSequence}
+          </option>
+        ))}
+      </Select>
     </Stack>
   );
 }
