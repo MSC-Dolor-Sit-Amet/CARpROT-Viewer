@@ -1,8 +1,8 @@
 import React from 'react';
-import { Checkbox, Stack, Text, Textarea, Button, RadioGroup, Radio, Divider, useColorMode } from '@chakra-ui/react';
-import InputOutputProps from '../types/InputOutputProps';
+import { Checkbox, Stack, Text, Textarea, Button, Divider, useColorMode } from '@chakra-ui/react';
+import { InputProps } from '../types/InputOutputProps';
 
-function Input({ sequence, handleSequenceChange, directions, setDirections, handleTranslate }: InputOutputProps) {
+function Input({ sequence, handleSequenceChange, directions, setDirections, handleTranslate }: InputProps) {
   const { colorMode } = useColorMode();
 
   return (

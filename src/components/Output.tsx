@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Divider, Select, Stack, Text, useColorMode } from '@chakra-ui/react';
 import { OutputProps } from '../types/InputOutputProps';
 
-function Output({ resultProteins, selectedProteinIndex, setSelectedProteinIndex }: OutputProps) {
+function Output({ resultProteins, setSelectedProteinIndex }: OutputProps) {
   const { colorMode } = useColorMode();
 
   const ref123 = React.useRef<HTMLSelectElement>(null);
