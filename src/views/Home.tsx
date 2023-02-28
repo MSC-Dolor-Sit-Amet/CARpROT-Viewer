@@ -14,7 +14,7 @@ function Home() {
 
   const [resultProteins, setResultProteins] = React.useState<resultProteinsType>([]);
 
-  const [selectedProteinIndex, setSelectedProteinIndex] = React.useState<number | null>(null);
+  const [pdbId, setPdbId] = React.useState<string | null>(null);
 
   const handleTranslate = () => {
     const proteins = translate(sequence, directions);
@@ -37,14 +37,14 @@ function Home() {
 
   const outputProps = {
     resultProteins,
-    setSelectedProteinIndex,
+    setPdbId,
   };
 
   return (
     <Stack direction="column" spacing={4} maxWidth="1000" margin="30px auto" borderRadius="lg">
       <Input {...inputProps} />
       <Output {...outputProps} />
-      <Viewer pdbId={selectedProteinIndex ? resultProteins[selectedProteinIndex] : null} />
+      <Viewer pdbId={pdbId} />
     </Stack>
   );
 }

@@ -9,9 +9,6 @@ type handleSequenceChangeType = (e: React.ChangeEvent<HTMLTextAreaElement>) => v
 
 type handleTranslateType = () => void;
 
-type selectedProteinIndexType = number;
-type setSelectedProteinIndexType = React.Dispatch<React.SetStateAction<selectedProteinIndexType>>;
-
 interface InputProps {
   sequence: sequenceType;
   directions: directionsType;
@@ -22,8 +19,6 @@ interface InputProps {
 
 interface OutputProps {
   resultProteins: resultProteinsType;
-  selectedProteinIndex: selectedProteinIndexType;
-  setSelectedProteinIndex: setSelectedProteinIndexType;
 }
 
 export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinsType };
