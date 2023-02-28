@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import * as codonsDict from './codons.json';
-import InputOutputProps from '../types/InputOutputProps';
+import { directionsType } from '../types/InputOutputProps';
 import getProteinName from './api';
 
 interface CodonsDictType {
@@ -11,7 +11,7 @@ interface CodonsDictType {
   };
 }
 
-const DNAToAminoAcids = newSequence => {
+const DNAToAminoAcids = (newSequence: string) => {
   // join every 3 codon positions for 3 variants
   const codons: { [key: string]: string[][] } = {};
   for (let i = 0; i < 3; i += 1) {
@@ -33,7 +33,7 @@ const DNAToAminoAcids = newSequence => {
   return aminoAcids;
 };
 
-const aminoAcidsToPeptides = aminoAcids => {
+const aminoAcidsToPeptides = (aminoAcids: string[]) => {
   const peptides: string[] = [];
 
   aminoAcids.forEach(i => {
@@ -47,7 +47,7 @@ const aminoAcidsToPeptides = aminoAcids => {
   return peptides;
 };
 
-const translate = (sequence: string, direction: InputOutputProps['directions']) => {
+const translate = (sequence: string, direction: directionsType) => {
   const newSequence = sequence
     // remove line breaks
     .replace(/(\r\n|\n|\r)/gm, '')
