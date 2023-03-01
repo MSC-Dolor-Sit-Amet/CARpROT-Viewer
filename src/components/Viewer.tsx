@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Stage, Component, RepresentationDescriptor, Position, Rotation, applyCameraState } from 'react-ngl';
+import React, { useMemo, useState } from 'react';
+import { Stage, Component, RepresentationDescriptor } from 'react-ngl';
 import { Stack } from '@chakra-ui/react';
+import { useColorsContext } from '../providers/ColorsContext';
 
 type ViewerProps = {
   pdbId: string | null;
@@ -13,6 +14,8 @@ function loadingError(error: Error) {
 }
 
 function Viewer({ pdbId }: ViewerProps) {
+  const colors = useColorsContext();
+
   const reduced = false;
   const reprList: RepresentationDescriptor[] = useMemo(
     () => [
@@ -35,9 +38,9 @@ function Viewer({ pdbId }: ViewerProps) {
   };
 
   return (
-    <Stack direction="column" borderRadius="lg" overflow="hidden" height="50vh" bgColor="#000000">
+    <Stack direction="column" borderRadius="lg" overflow="hidden" height="50vh" bgColor={colors.panelsColor}>
       {pdbId ? (
-        <Stage width="100%" height="100%" cameraState={cameraState}>
+        <Stage width="100%" height="100%" cameraState={cameraState} params={{ backgroundColor: colors.panelsColor }}>
           <Component path={makeRoute(pdbId, reduced)} reprList={reprList} onLoad={onLoaded} onLoadFailure={loadingError} />
         </Stage>
       ) : null}

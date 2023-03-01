@@ -4,7 +4,7 @@ import Input from '../components/Input';
 import Output from '../components/Output';
 import translate from '../utils/translate';
 import Viewer from '../components/Viewer';
-import { directionsType, resultProteinsType, sequenceType } from '../types/InputOutputProps';
+import { directionsType, pdbIdType, resultProteinsType, sequenceType } from '../types/InputOutputProps';
 import ChainView from '../components/ChainView';
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
 
   const [resultProteins, setResultProteins] = React.useState<resultProteinsType>([]);
 
-  const [pdbId, setPdbId] = React.useState<string | null>(null);
+  const [pdbId, setPdbId] = React.useState<pdbIdType>(null);
 
   const handleTranslate = () => {
     const proteins = translate(sequence, directions);

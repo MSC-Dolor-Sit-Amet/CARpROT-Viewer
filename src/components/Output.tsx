@@ -1,12 +1,13 @@
 import React from 'react';
-import { Divider, Select, Stack, Text, useColorMode } from '@chakra-ui/react';
+import { Divider, Select, Stack, Text } from '@chakra-ui/react';
 import { OutputProps } from '../types/InputOutputProps';
+import { useColorsContext } from '../providers/ColorsContext';
 
 function Output({ resultProteins, setPdbId }: OutputProps) {
-  const { colorMode } = useColorMode();
+  const colors = useColorsContext();
 
   return (
-    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colorMode === 'light' ? 'blue.50' : 'whiteAlpha.100'}>
+    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colors.panelsColor}>
       <Text fontSize="xl" as="b">
         Output
       </Text>

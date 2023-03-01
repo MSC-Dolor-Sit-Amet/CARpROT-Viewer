@@ -1,12 +1,13 @@
 import React from 'react';
-import { Checkbox, Stack, Text, Textarea, Button, Divider, useColorMode } from '@chakra-ui/react';
+import { Checkbox, Stack, Text, Textarea, Button, Divider } from '@chakra-ui/react';
 import { InputProps } from '../types/InputOutputProps';
+import { useColorsContext } from '../providers/ColorsContext';
 
 function Input({ sequence, handleSequenceChange, directions, setDirections, handleTranslate }: InputProps) {
-  const { colorMode } = useColorMode();
+  const colors = useColorsContext();
 
   return (
-    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colorMode === 'light' ? 'blue.50' : 'whiteAlpha.100'}>
+    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" backgroundColor={colors.panelsColor}>
       <Text fontSize="xl" as="b">
         Input
       </Text>

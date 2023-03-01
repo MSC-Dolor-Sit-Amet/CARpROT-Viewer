@@ -9,6 +9,9 @@ type handleSequenceChangeType = (e: React.ChangeEvent<HTMLTextAreaElement>) => v
 
 type handleTranslateType = () => void;
 
+type pdbIdType = string | null;
+type setPdbIdType = React.Dispatch<React.SetStateAction<pdbIdType>>;
+
 interface InputProps {
   sequence: sequenceType;
   directions: directionsType;
@@ -19,6 +22,7 @@ interface InputProps {
 
 interface OutputProps {
   resultProteins: resultProteinsType;
+  setPdbId: setPdbIdType;
 }
 
-export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinsType };
+export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinsType, pdbIdType, setPdbIdType };

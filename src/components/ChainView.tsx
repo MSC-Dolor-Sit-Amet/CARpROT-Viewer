@@ -1,9 +1,11 @@
 import { buildInstanceFv } from '@rcsb/rcsb-saguaro-app';
 import React, { useEffect } from 'react';
-import { Stack, useColorMode } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
+import { useColorsContext } from '../providers/ColorsContext';
+import { pdbIdType } from '../types/InputOutputProps';
 
-function ChainView({ pdbId }: { pdbId: string }) {
-  const { colorMode } = useColorMode();
+function ChainView({ pdbId }: { pdbId: pdbIdType }) {
+  const colors = useColorsContext();
 
   useEffect(() => {
     if (!pdbId) return;
@@ -13,14 +15,7 @@ function ChainView({ pdbId }: { pdbId: string }) {
   }, [pdbId]);
 
   return (
-    <Stack
-      direction="column"
-      spacing={4}
-      padding="5"
-      borderRadius="lg"
-      minHeight="16rem"
-      backgroundColor={colorMode === 'light' ? 'blue.50' : 'whiteAlpha.100'}
-    >
+    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" minHeight="16rem" backgroundColor={colors.panelsColor}>
       {pdbId ? <div id="pfv" style={{ maxWidth: '10vw' }} /> : null}
     </Stack>
   );
