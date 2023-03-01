@@ -5,6 +5,7 @@ import Output from '../components/Output';
 import translate from '../utils/translate';
 import Viewer from '../components/Viewer';
 import { directionsType, resultProteinsType, sequenceType } from '../types/InputOutputProps';
+import ChainView from '../components/ChainView';
 
 function Home() {
   const [sequence, setSequence] = React.useState<sequenceType>('');
@@ -44,6 +45,7 @@ function Home() {
     <Stack direction="column" spacing={4} maxWidth="1000" margin="30px auto" borderRadius="lg">
       <Input {...inputProps} />
       <Output {...outputProps} />
+      <ChainView pdbId={pdbId} />
       <Viewer pdbId={pdbId} />
     </Stack>
   );
