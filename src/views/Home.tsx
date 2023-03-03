@@ -1,13 +1,14 @@
 import React from 'react';
-import { Stack } from '@chakra-ui/react';
+import { Stack, useDisclosure } from '@chakra-ui/react';
 import Input from '../components/Input';
 import Output from '../components/Output';
 import translate from '../utils/translate';
 import Viewer from '../components/Viewer';
 import { directionsType, pdbIdType, resultProteinsType, sequenceType } from '../types/InputOutputProps';
 import ChainView from '../components/ChainView';
+import DrawerComponent from '../components/Drawer';
 
-function Home() {
+function Home({ drawerProps }) {
   const [sequence, setSequence] = React.useState<sequenceType>('');
   const handleSequenceChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setSequence(e.target.value);
 
@@ -42,12 +43,14 @@ function Home() {
   };
 
   return (
-    <Stack direction="column" spacing={4} maxWidth="1000" margin="30px auto" borderRadius="lg">
-      <Input {...inputProps} />
-      <Output {...outputProps} />
-      <ChainView pdbId={pdbId} />
-      <Viewer pdbId={pdbId} />
-    </Stack>
+    <>
+      <DrawerComponent drawerProps={drawerProps} inputProps={inputProps} />
+      <Stack direction="column" spacing={4} maxWidth="1000" paddingX={5} marginX="auto" marginY={5} borderRadius="lg">
+        <Output {...outputProps} />
+        <ChainView pdbId={pdbId} />
+        <Viewer pdbId={pdbId} />
+      </Stack>
+    </>
   );
 }
 

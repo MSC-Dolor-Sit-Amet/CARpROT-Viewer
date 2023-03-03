@@ -1,9 +1,9 @@
 import React from 'react';
-import { Checkbox, Stack, Text, Textarea, Button, Divider } from '@chakra-ui/react';
+import { Checkbox, Stack, Text, Textarea, Divider } from '@chakra-ui/react';
 import { InputProps } from '../types/InputOutputProps';
 import { useColorsContext } from '../providers/ColorsContext';
 
-function Input({ sequence, handleSequenceChange, directions, setDirections, handleTranslate }: InputProps) {
+function Input({ sequence, handleSequenceChange, directions, setDirections }: InputProps) {
   const colors = useColorsContext();
 
   return (
@@ -53,10 +53,6 @@ function Input({ sequence, handleSequenceChange, directions, setDirections, hand
           </Checkbox>
         </Stack>
       </Stack>
-
-      <Button width="min-content" onClick={handleTranslate}>
-        Translate
-      </Button>
     </Stack>
   );
 }
