@@ -15,8 +15,17 @@ function ChainView({ pdbId }: { pdbId: pdbIdType }) {
   }, [pdbId]);
 
   return (
-    <Stack direction="column" spacing={4} padding="5" borderRadius="lg" minHeight="16rem" backgroundColor={colors.panelsColor}>
-      {pdbId ? <div id="pfv" style={{ maxWidth: '10vw' }} /> : null}
+    <Stack
+      direction="column"
+      spacing={4}
+      padding="5"
+      borderRadius="lg"
+      minHeight="16rem"
+      backgroundColor={colors.panelsColor}
+      justifyContent="center"
+      overflowX="auto"
+    >
+      {pdbId ? <div id="pfv" /> : null}
     </Stack>
   );
 }
