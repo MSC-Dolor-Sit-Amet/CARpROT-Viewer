@@ -3,7 +3,12 @@ type sequenceType = string;
 type directionsType = { forward: boolean; reverse: boolean };
 type setDirectionsType = React.Dispatch<React.SetStateAction<directionsType>>;
 
-type resultProteinsType = string[];
+type resultProteinType = {
+  index: number;
+  protein: string;
+  sequence: string;
+  pdbId: string | false;
+};
 
 type handleSequenceChangeType = (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 
@@ -25,4 +30,4 @@ interface OutputProps {
   setPdbId: setPdbIdType;
 }
 
-export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinsType, pdbIdType, setPdbIdType };
+export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinType, pdbIdType, setPdbIdType };

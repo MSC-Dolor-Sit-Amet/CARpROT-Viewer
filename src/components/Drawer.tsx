@@ -10,7 +10,7 @@ function DrawerComponent({ drawerProps, inputProps }) {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Sequence</DrawerHeader>
+        <DrawerHeader>Input</DrawerHeader>
 
         <DrawerBody>
           <Input {...inputProps} />

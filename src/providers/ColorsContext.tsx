@@ -15,7 +15,7 @@ function ColorsProvider({ children }: { children: React.ReactNode }) {
 
   const [colorsState, setColorsState] = useState<ColorsProps>(defaultValue);
 
-  const [white, blue50, gray700, gray800] = useToken('colors', ['white', 'blue.50', 'gray.700', 'gray.800']);
+  const [white, blue50, gray700, gray800] = useToken('colors', ['white', 'gray.200', 'gray.700', 'gray.800']);
 
   const bgColor = colorMode === 'light' ? white : gray800;
   const panelsColor = colorMode === 'light' ? blue50 : gray700;

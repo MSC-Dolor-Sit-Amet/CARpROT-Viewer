@@ -6,7 +6,7 @@ function Input({ sequence, handleSequenceChange, directions, setDirections }: In
   return (
     <Stack direction="column" spacing={4} padding="5" borderRadius="lg">
       <Stack direction="column" spacing={2}>
-        <Text as="b">Input sequence</Text>
+        <Text as="b">Sequence</Text>
         <Textarea
           value={sequence}
           onChange={handleSequenceChange}

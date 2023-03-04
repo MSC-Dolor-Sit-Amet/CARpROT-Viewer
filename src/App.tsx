@@ -3,8 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDisclosure } from '@chakra-ui/react';
 import Header from './components/Header';
 import Home from './views/Home';
-import { sequenceType, directionsType, resultProteinsType, pdbIdType } from './types/InputOutputProps';
+import { sequenceType, directionsType, resultProteinType } from './types/InputOutputProps';
 import translate from './utils/translate';
+import Result from './views/Result';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -15,26 +16,20 @@ function App() {
 
   const [directions, setDirections] = React.useState<directionsType>({ forward: true, reverse: true });
 
-  const [resultProteins, setResultProteins] = React.useState<resultProteinsType>([]);
-
-  const [pdbId, setPdbId] = React.useState<pdbIdType>(null);
+  const [resultProteins, setResultProteins] = React.useState<resultProteinType[]>([]);
 
   const handleTranslate = () => {
     const [sequences, proteins, images] = translate(sequence, directions);
 
-    Promise.all(proteins).then(proteins => {
-      let peptides: Object[] = [];
+    Promise.all(proteins).then(p => {
+      const peptides: resultProteinType[] = [];
 
       // create array of sequence -> protein name
       sequences.forEach((element, i) => {
-        peptides.push({ sequence: element, protein: proteins[i], image_src: images[i] });
+        peptides.push({ index: i, sequence: element, pdbId: p[i], imageSrc: images[i] });
       });
 
-      setResultProteins(
-        peptides.map(peptide => {
-          return peptide.protein || peptide.sequence; // return protein name if exists, otherwise sequence
-        }),
-      );
+      setResultProteins(peptides);
     });
   };
 
@@ -46,11 +41,6 @@ function App() {
     handleTranslate,
   };
 
-  const outputProps = {
-    resultProteins,
-    setPdbId,
-  };
-
   const drawerProps = {
     isOpen,
     onOpen,
@@ -60,9 +50,10 @@ function App() {
 
   return (
     <>
-      <Header btnRef={btnRef} onOpen={onOpen} resultProteins={resultProteins} setPdbId={setPdbId} />
+      <Header btnRef={btnRef} onOpen={onOpen} />
       <Routes>
-        <Route path="/" element={<Home inputProps={inputProps} outputProps={outputProps} drawerProps={drawerProps} pdbId={pdbId} />} />
+        <Route path="/" element={<Home inputProps={inputProps} resultProteins={resultProteins} drawerProps={drawerProps} />} />
+        <Route path="/result" element={<Result />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
