@@ -20,14 +20,14 @@ function App() {
   const [pdbId, setPdbId] = React.useState<pdbIdType>(null);
 
   const handleTranslate = () => {
-    const [sequences, proteins] = translate(sequence, directions);
+    const [sequences, proteins, images] = translate(sequence, directions);
 
     Promise.all(proteins).then(proteins => {
       let peptides: Object[] = [];
 
       // create array of sequence -> protein name
       sequences.forEach((element, i) => {
-        peptides.push({ sequence: element, protein: proteins[i] });
+        peptides.push({ sequence: element, protein: proteins[i], image_src: images[i] });
       });
 
       setResultProteins(

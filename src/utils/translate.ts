@@ -2,6 +2,7 @@
 import * as codonsDict from './codons.json';
 import { directionsType } from '../types/InputOutputProps';
 import getProteinName from './api';
+import getPeptideImage from './images';
 
 interface CodonsDictType {
   [key: string]: {
@@ -93,7 +94,9 @@ const translate = (sequence: string, direction: directionsType) => {
     return getProteinName(peptide); // substitute peptides for proteins
   });
 
-  return [peptides, proteins];
+  const images = peptides.map(peptide => getPeptideImage(peptide));
+
+  return [peptides, proteins, images];
 };
 
 export default translate;
