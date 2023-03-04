@@ -89,13 +89,11 @@ const translate = (sequence: string, direction: directionsType) => {
 
   const peptides = aminoAcidsToPeptides(aminoAcids);
 
-  const proteins: Promise<string>[] = peptides
-    .filter(peptide => peptide.length >= 100)
-    .map(peptide => {
-      return getProteinName(peptide); // substitute peptides for proteins
-    });
+  const proteins: Promise<string>[] = peptides.map(peptide => {
+    return getProteinName(peptide); // substitute peptides for proteins
+  });
 
-  return proteins;
+  return [peptides, proteins];
 };
 
 export default translate;

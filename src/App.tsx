@@ -20,12 +20,20 @@ function App() {
   const [pdbId, setPdbId] = React.useState<pdbIdType>(null);
 
   const handleTranslate = () => {
-    const proteins = translate(sequence, directions);
+    const [sequences, proteins] = translate(sequence, directions);
 
-    // update values when fetching ends
-    Promise.all(proteins).then(res => {
+    Promise.all(proteins).then(proteins => {
+      let peptides: Object[] = [];
+
+      // create array of sequence -> protein name
+      sequences.forEach((element, i) => {
+        peptides.push({ sequence: element, protein: proteins[i] });
+      });
+
       setResultProteins(
-        res.filter(n => n), // filter out empty elements
+        peptides.map(peptide => {
+          return peptide.protein || peptide.sequence; // return protein name if exists, otherwise sequence
+        }),
       );
     });
   };

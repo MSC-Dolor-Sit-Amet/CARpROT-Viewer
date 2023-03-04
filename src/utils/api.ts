@@ -1,5 +1,7 @@
 import getPeptideImage from './images';
 async function getProteinName(peptide: string) {
+  if (peptide.length < 100) return null;
+
   const url = 'https://search.rcsb.org/rcsbsearch/v2/query';
 
   const json = {
@@ -33,9 +35,9 @@ async function getProteinName(peptide: string) {
     const data = await response.json();
 
     getPeptideImage(peptide);
-
     return data.result_set[0].identifier.substring(0, 4);
   }
+
   return null;
 }
 
