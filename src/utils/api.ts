@@ -1,4 +1,3 @@
-import getPeptideImage from './images';
 async function getProteinName(peptide: string) {
   if (peptide.length < 100) return null;
 
@@ -34,7 +33,6 @@ async function getProteinName(peptide: string) {
   if (response.status === 200) {
     const data = await response.json();
 
-    getPeptideImage(peptide);
     return data.result_set[0].identifier.substring(0, 4);
   }
 
