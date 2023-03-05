@@ -1,8 +1,10 @@
 {
-  "name": "vite-project",
+  "name": "carprot-viewer",
+  "productName": "CARpROT Viewer",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
   "main": "dist-electron/main/index.js",
+  "icon": "./public/icon.ico",
   "debug": {
     "env": {
       "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"

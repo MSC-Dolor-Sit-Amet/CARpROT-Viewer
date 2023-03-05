@@ -1,33 +1,33 @@
-type sequenceType = string;
+type SequenceType = string;
 
-type directionsType = { forward: boolean; reverse: boolean };
-type setDirectionsType = React.Dispatch<React.SetStateAction<directionsType>>;
+type DirectionsType = { forward: boolean; reverse: boolean };
+type SetDirectionsType = React.Dispatch<React.SetStateAction<DirectionsType>>;
 
-type resultProteinType = {
+type ResultProteinType = {
   index: number;
   protein: string;
   sequence: string;
   pdbId: string | false;
 };
 
-type handleTranslateType = () => void;
+type HandleTranslateType = () => void;
 
-type pdbIdType = string | null;
-type setPdbIdType = React.Dispatch<React.SetStateAction<pdbIdType>>;
+type PdbIdType = string | null;
+type SetPdbIdType = React.Dispatch<React.SetStateAction<PdbIdType>>;
 
-type setSequenceType = React.Dispatch<React.SetStateAction<sequenceType>>;
+type SetSequenceType = React.Dispatch<React.SetStateAction<SequenceType>>;
 
 interface InputProps {
-  sequence: sequenceType;
-  directions: directionsType;
-  setDirections: setDirectionsType;
-  setSequence: setSequenceType;
-  handleTranslate: handleTranslateType;
+  sequence: SequenceType;
+  directions: DirectionsType;
+  setDirections: SetDirectionsType;
+  setSequence: SetSequenceType;
+  handleTranslate: HandleTranslateType;
 }
 
 interface OutputProps {
-  resultProteins: resultProteinsType;
-  setPdbId: setPdbIdType;
+  resultProteins: ResultProteinType;
+  setPdbId: SetPdbIdType;
 }
 
-export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinType, pdbIdType, setPdbIdType, setSequenceType };
+export type { InputProps, OutputProps, SequenceType, DirectionsType, ResultProteinType, PdbIdType, SetPdbIdType, SetSequenceType };

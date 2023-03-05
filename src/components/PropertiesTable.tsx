@@ -1,9 +1,10 @@
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
+import { PropertiesType } from '../types/PropertiesType';
 import getProperties from '../utils/properties/peptideProperties';
 
-function PropertiesTable({ sequence }) {
-  const [properties, setProperies] = React.useState([]);
+function PropertiesTable({ sequence }: { sequence: string }) {
+  const [properties, setProperies] = React.useState<PropertiesType[]>([]);
 
   useEffect(() => {
     if (!sequence) return;

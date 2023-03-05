@@ -1,9 +1,10 @@
+/* eslint-disable react/require-default-props */
 import { ChevronLeftIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useColorMode, Button, Flex, Spacer, useColorModeValue, Image, Box, Heading } from '@chakra-ui/react';
-import React from 'react';
+import { useColorMode, Button, Flex, Spacer, useColorModeValue, Image, Heading } from '@chakra-ui/react';
+import React, { LegacyRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-function LeftButton({ path, onOpen, btnRef }) {
+function LeftButton({ path, onOpen, btnRef }: { path?: string; onOpen: () => void; btnRef: React.RefObject<HTMLButtonElement | null> }) {
   const hoverColorModeValue = useColorModeValue('primary.300', 'primary.300');
 
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function LeftButton({ path, onOpen, btnRef }) {
       return (
         <Button
           onClick={onOpen}
-          ref={btnRef}
+          ref={btnRef as LegacyRef<HTMLButtonElement> | undefined}
           variant="solid"
           _hover={{
             textDecoration: 'none',
@@ -43,7 +44,7 @@ function LeftButton({ path, onOpen, btnRef }) {
   return null;
 }
 
-function Header({ btnRef, onOpen }) {
+function Header({ btnRef, onOpen }: { btnRef: React.RefObject<HTMLButtonElement | null>; onOpen: () => void }) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const location = useLocation();

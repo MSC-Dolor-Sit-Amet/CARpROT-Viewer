@@ -1,9 +1,9 @@
 import { buildInstanceFv } from '@rcsb/rcsb-saguaro-app';
 import React, { useEffect } from 'react';
 import { Stack } from '@chakra-ui/react';
-import { pdbIdType } from '../types/InputOutputProps';
+import { PdbIdType } from '../types/InputOutputProps';
 
-function ChainView({ pdbId }: { pdbId: pdbIdType }) {
+function ChainView({ pdbId }: { pdbId: PdbIdType }) {
   useEffect(() => {
     if (!pdbId) return;
     buildInstanceFv('pfv', `${pdbId}.A`, {

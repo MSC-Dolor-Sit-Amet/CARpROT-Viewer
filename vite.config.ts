@@ -1,10 +1,9 @@
-import { defineConfig, defineConfig } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 
 import { rmSync } from 'node:fs';
-import path from 'node:path';
 import electron from 'vite-electron-plugin';
-import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
+import { loadViteEnv } from 'vite-electron-plugin/plugin';
 import renderer from 'vite-plugin-electron-renderer';
 import pkg from './package.json';
 
@@ -15,11 +14,6 @@ export default defineConfig(({ command }) => {
   const sourcemap = command === 'serve' || !!process.env.VSCODE_DEBUG;
 
   return {
-    resolve: {
-      alias: {
-        '@': path.join(__dirname, 'src'),
-      },
-    },
     plugins: [
       react(),
       electron({
@@ -28,12 +22,6 @@ export default defineConfig(({ command }) => {
           sourcemap,
         },
         plugins: [
-          ...(process.env.VSCODE_DEBUG
-            ? [
-                // Will start Electron via VSCode Debug
-                customStart(() => console.log(/* For `.vscode/.debug.script.mjs` */ '[startup] Electron App')),
-              ]
-            : []),
           // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
           loadViteEnv(),
         ],

@@ -3,19 +3,19 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDisclosure } from '@chakra-ui/react';
 import Header from './components/Header';
 import Home from './views/Home';
-import { sequenceType, directionsType, resultProteinType } from './types/InputOutputProps';
+import { SequenceType, DirectionsType, ResultProteinType } from './types/InputOutputProps';
 import translate from './utils/translate';
 import Result from './views/Result';
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const btnRef = React.useRef<HTMLButtonElement | null>(null);
 
-  const [sequence, setSequence] = React.useState<sequenceType>(localStorage.getItem('sequence') || '');
+  const [sequence, setSequence] = React.useState<SequenceType>(localStorage.getItem('sequence') || '');
 
-  const [directions, setDirections] = React.useState<directionsType>({ forward: true, reverse: true });
+  const [directions, setDirections] = React.useState<DirectionsType>({ forward: true, reverse: true });
 
-  const [resultProteins, setResultProteins] = React.useState<resultProteinType[]>([]);
+  const [resultProteins, setResultProteins] = React.useState<ResultProteinType[]>([]);
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -24,7 +24,7 @@ function App() {
     setIsLoading(true);
 
     Promise.all(proteins).then(p => {
-      const peptides: resultProteinType[] = [];
+      const peptides: ResultProteinType[] = [];
 
       // create array of sequence -> protein name
       sequences.forEach((element, i) => {
@@ -42,6 +42,7 @@ function App() {
 
   useEffect(() => {
     if (sequence) handleTranslate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const inputProps = {

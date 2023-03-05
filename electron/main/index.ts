@@ -39,14 +39,15 @@ const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, 'index.html');
 
 async function createWindow() {
-  console.log(process.env.PUBLIC);
+  // console.log(process.env.PUBLIC);
   win = new BrowserWindow({
     title: 'CARpROT Viewer',
     icon: join(process.env.PUBLIC, 'icon.ico'),
     width: 1600,
     height: 1000,
-    minWidth: 1200,
+    minWidth: 1250,
     minHeight: 800,
+    autoHideMenuBar: true,
     webPreferences: {
       // preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
@@ -55,6 +56,7 @@ async function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       webSecurity: false,
+      devTools: false,
     },
   });
 

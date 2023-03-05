@@ -1,5 +1,5 @@
 import * as codonsDict from './codons.json';
-import { directionsType } from '../types/InputOutputProps';
+import { DirectionsType } from '../types/InputOutputProps';
 import getProteinName from './api';
 import getPeptideImage from './images';
 
@@ -47,7 +47,7 @@ const aminoAcidsToPeptides = (aminoAcids: string[]) => {
   return peptides;
 };
 
-const translate = (sequence: string, direction: directionsType) => {
+const translate = (sequence: string, direction: DirectionsType) => {
   const newSequence = sequence
     // remove line breaks
     .replace(/(\r\n|\n|\r)/gm, '')

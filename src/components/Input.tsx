@@ -1,46 +1,58 @@
 import React, { useCallback } from 'react';
-import { Checkbox, Stack, Text, Textarea, Divider, Box, useToast } from '@chakra-ui/react';
+import { Checkbox, Stack, Text, Textarea, Divider, Box, useToast, Highlight, Button } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
-import { InputProps, setSequenceType } from '../types/InputOutputProps';
+import { InputProps, SetSequenceType } from '../types/InputOutputProps';
 import showError from '../utils/showError';
 
-function SequenceDropZone({ setSequence, children }: { setSequence: setSequenceType; children?: React.ReactNode }) {
+function SequenceDropZone({ setSequence, children }: { setSequence: SetSequenceType; children: React.ReactNode }) {
   const toast = useToast();
 
-  const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.forEach(file => {
-      const reader = new FileReader();
+  const onDrop = useCallback(
+    (acceptedFiles: any) => {
+      acceptedFiles.forEach((file: unknown) => {
+        const reader = new FileReader();
 
-      reader.onabort = () => showError('file reading was aborted', toast);
-      reader.onerror = () => showError('file reading has failed', toast);
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-        const binaryStr = reader.result;
+        reader.onabort = () => showError('file reading was aborted', toast);
+        reader.onerror = () => showError('file reading has failed', toast);
+        reader.onload = () => {
+          // Do whatever you want with the file contents
+          const binaryStr = reader.result;
 
-        if (!('TextEncoder' in window)) {
-          showError('Sorry, this browser does not support TextEncoder...', toast);
-        }
+          if (!('TextEncoder' in window)) {
+            showError('Sorry, this browser does not support TextEncoder...', toast);
+          }
 
-        const enc = new TextDecoder('utf-8');
-        setSequence(enc.decode(binaryStr));
-      };
-      reader.readAsArrayBuffer(file);
-    });
-  }, []);
+          const enc = new TextDecoder('utf-8');
+          setSequence(enc.decode(binaryStr as BufferSource));
+        };
+        reader.readAsArrayBuffer(file as Blob);
+      });
+    },
+    [setSequence, toast],
+  );
   const { getRootProps, getInputProps, open } = useDropzone({ onDrop, noClick: true });
 
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Box display="flex" flexDirection="column" alignItems="center" {...getRootProps()}>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <input {...getInputProps()} />
       {children}
-      <Text onClick={open} color="gray.500">
-        You can drag &apos;n&apos; drop sequence file onto text area or click here to open file browser
+      <Text color="gray.500" display="inline-block">
+        You can drag &apos;n&apos; drop sequence file onto text area or click&nbsp;
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <Button onClick={open} size="xs" paddingY="0" fontSize="1rem">
+          here
+        </Button>
+        &nbsp;to open file browser
       </Text>
     </Box>
   );
 }
 
-function Input({ sequence, setSequence, directions, setDirections }: InputProps) {
+function Input({ inputProps }: { inputProps: InputProps }) {
+  const { sequence, setSequence, directions, setDirections } = inputProps;
+
   return (
     <Stack direction="column" spacing={4} padding="5" borderRadius="lg">
       <Stack direction="column" spacing={2}>

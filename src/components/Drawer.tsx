@@ -1,8 +1,10 @@
 import { DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, Drawer } from '@chakra-ui/react';
 import React from 'react';
 import Input from './Input';
+import DrawerProps from '../types/DrawerProps';
+import { InputProps } from '../types/InputOutputProps';
 
-function DrawerComponent({ drawerProps, inputProps }) {
+function DrawerComponent({ drawerProps, inputProps }: { drawerProps: DrawerProps; inputProps: InputProps }) {
   const { isOpen, onClose, btnRef } = drawerProps;
 
   return (
@@ -13,7 +15,7 @@ function DrawerComponent({ drawerProps, inputProps }) {
         <DrawerHeader>Input</DrawerHeader>
 
         <DrawerBody>
-          <Input {...inputProps} />
+          <Input inputProps={inputProps} />
         </DrawerBody>
 
         <DrawerFooter>
