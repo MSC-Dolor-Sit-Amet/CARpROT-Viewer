@@ -173,13 +173,15 @@ function getProperties(seq: string) {
   const [Ip, charge] = calcIsoelectricPoint(letterCounts, seq);
   const [ec1, ec2] = calcExtCo(letterCounts);
   const hydrophobicity = calcHydrophobicity(letterCounts);
+  const lengthCount = seq.length
 
   const properties = [
-    { name: 'Mass', value: mass, unit: 'M⁻¹g' },
+    { name: 'Chain length', value: lengthCount},
+    { name: 'Mass', value: mass, unit: 'M⁻¹・g' },
     { name: 'Isoelectric Point', value: Ip, unit: 'pH' },
     { name: 'Charge', value: charge },
-    { name: 'Molar extinction coefficient 1', value: ec1, unit: 'M⁻¹cm⁻¹' },
-    { name: 'Molar extinction coefficient 2', value: ec2, unit: 'M⁻¹cm⁻¹' },
+    { name: 'Molar extinction coefficient 1', value: ec1, unit: 'M⁻¹・cm⁻¹' },
+    { name: 'Molar extinction coefficient 2', value: ec2, unit: 'M⁻¹・cm⁻¹' },
     { name: 'Hydrophobicity', value: hydrophobicity, unit: 'Kcal・mol ⁻¹' },
   ];
 
