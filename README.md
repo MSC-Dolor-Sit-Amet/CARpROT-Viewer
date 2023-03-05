@@ -88,3 +88,7 @@ yarn dev
    3. If the selected peptide is a protein:
       - A chart of its features is displayed
       - A 3D structure model is requested from **RCSB PDB** and displayed
+
+## Credits
+
+Logo designed by [pch.vector](https://www.freepik.com/author/pch-vector) and [Bakar015](https://www.freepik.com/author/bakar015) / Freepik
