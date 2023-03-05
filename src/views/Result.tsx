@@ -5,6 +5,7 @@ import ChainView from '../components/ChainView';
 import Viewer from '../components/Viewer';
 import ResultSequence from '../components/ResultSequence';
 import PropertiesTable from '../components/PropertiesTable';
+import ImageViewer from '../components/ImageViewer';
 
 function Result() {
   const [searchParams] = useSearchParams();
@@ -32,6 +33,7 @@ function Result() {
         <ResultSequence sequence={sequence} pdbId={pdbId} />
         <PropertiesTable sequence={sequence} />
         <ChainView pdbId={pdbId} />
+        <ImageViewer sequence={sequence} />
         <Viewer pdbId={pdbId} />
       </Stack>
     </Stack>
