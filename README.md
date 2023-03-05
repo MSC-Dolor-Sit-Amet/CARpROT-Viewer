@@ -1,8 +1,7 @@
-![](https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png)
-
-
-
-![](./public/logoWithText.png)
+<p float=left>
+<img src = https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png>
+<img src = ./public/logoWithText.png>
+</p>
 
 # CARpROT Viewer
 
