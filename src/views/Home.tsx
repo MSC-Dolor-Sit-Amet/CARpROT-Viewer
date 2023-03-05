@@ -9,7 +9,7 @@ function Home({ drawerProps, inputProps, resultProteins, isLoading }) {
   return (
     <>
       <DrawerComponent drawerProps={drawerProps} inputProps={inputProps} />
-      <Stack direction="column" flexGrow={1} spacing={4} width="100%" maxWidth="1200" marginX="auto" padding={5} borderRadius="lg">
+      <Stack direction="column" flexGrow={1} spacing={4} width="100%" maxWidth="1100" marginX="auto" padding={5} borderRadius="lg">
         <Stack
           direction="column"
           flexGrow={1}

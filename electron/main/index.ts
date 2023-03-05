@@ -39,15 +39,16 @@ const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, 'index.html');
 
 async function createWindow() {
+  console.log(process.env.PUBLIC);
   win = new BrowserWindow({
-    title: 'Main window',
-    icon: join(process.env.PUBLIC, 'favicon.ico'),
+    title: 'CARpROT Viewer',
+    icon: join(process.env.PUBLIC, 'icon.ico'),
     width: 1600,
     height: 1000,
     minWidth: 1200,
     minHeight: 800,
     webPreferences: {
-      preload,
+      // preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
@@ -106,7 +107,7 @@ app.on('activate', () => {
 ipcMain.handle('open-win', (_, arg) => {
   const childWindow = new BrowserWindow({
     webPreferences: {
-      preload,
+      // preload,
       nodeIntegration: true,
       contextIsolation: false,
     },

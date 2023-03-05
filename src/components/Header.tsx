@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useColorMode, Button, Flex, Spacer, useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, Button, Flex, Spacer, useColorModeValue, Image, Box, Heading } from '@chakra-ui/react';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -51,6 +51,13 @@ function Header({ btnRef, onOpen }) {
   return (
     <Flex bgColor={useColorModeValue('gray.100', 'gray.900')} color="white" padding={5} gap={5} alignItems="center">
       <LeftButton path={location.pathname} onOpen={onOpen} btnRef={btnRef} />
+      <Spacer />
+      <Flex alignItems="center" gap={3}>
+        <Image src="./icon.svg" alt="logo" height="2rem" />
+        <Heading size="md" color={useColorModeValue('gray.700', 'gray.100')}>
+          CARpROT Viewer
+        </Heading>
+      </Flex>
       <Spacer />
       <Button
         onClick={toggleColorMode}
