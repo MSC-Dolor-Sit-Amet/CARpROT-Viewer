@@ -43,7 +43,7 @@ TODO
 ## Usage
 
 1. Click on the input button to open input drawer
-2. Enter DNA/RNA sequence or import it from a file
+2. Enter DNA/RNA sequence or import it from a file (drag it into input area, or use import button below it)
 3. Click save
 4. Choose a peptide from the list (you can filter out all non-protein peptides by using toggle switches)
 5. If a selected peptide is a protein found in **RCSB PDB** a features chart and a 3D model will be displayed, otherwise only peptide properties and a 2D image will be displayed
