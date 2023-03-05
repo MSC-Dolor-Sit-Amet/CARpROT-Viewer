@@ -1,21 +1,24 @@
 import React, { useCallback } from 'react';
-import { Checkbox, Stack, Text, Textarea, Divider, Box } from '@chakra-ui/react';
+import { Checkbox, Stack, Text, Textarea, Divider, Box, useToast } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
 import { InputProps, setSequenceType } from '../types/InputOutputProps';
+import showError from '../utils/showError';
 
 function SequenceDropZone({ setSequence, children }: { setSequence: setSequenceType; children?: React.ReactNode }) {
+  const toast = useToast();
+
   const onDrop = useCallback(acceptedFiles => {
     acceptedFiles.forEach(file => {
       const reader = new FileReader();
 
-      reader.onabort = () => console.error('file reading was aborted');
-      reader.onerror = () => console.error('file reading has failed');
+      reader.onabort = () => showError('file reading was aborted', toast);
+      reader.onerror = () => showError('file reading has failed', toast);
       reader.onload = () => {
         // Do whatever you want with the file contents
         const binaryStr = reader.result;
 
         if (!('TextEncoder' in window)) {
-          console.error('Sorry, this browser does not support TextEncoder...');
+          showError('Sorry, this browser does not support TextEncoder...', toast);
         }
 
         const enc = new TextDecoder('utf-8');

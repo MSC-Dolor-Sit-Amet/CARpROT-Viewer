@@ -1,18 +1,15 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Stage, Component, RepresentationDescriptor, Position } from 'react-ngl';
-import { Box, Button, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup, Stack } from '@chakra-ui/react';
+import { Box, Button, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup, Stack, useToast } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useColorsContext } from '../providers/ColorsContext';
+import showError from '../utils/showError';
 
 type ViewerProps = {
   pdbId: string | null;
 };
 
 const makeRoute = (pdbId: string, reduced: boolean) => `rcsb://${pdbId}${reduced ? '.bb' : ''}.mmtf?ts=${Date.now()}`;
-
-function loadingError(error: Error) {
-  console.error(error);
-}
 
 function Viewer({ pdbId }: ViewerProps) {
   const colors = useColorsContext();
@@ -103,6 +100,8 @@ function Viewer({ pdbId }: ViewerProps) {
     }
   };
 
+  const toast = useToast();
+
   return pdbId ? (
     <Stack direction="column" borderRadius="lg" overflow="hidden" height="50vh" bgColor={colors.panelsColor} alignItems="start" position="relative">
       <Box position="absolute" zIndex={1000} top={5} left={5}>
@@ -120,7 +119,12 @@ function Viewer({ pdbId }: ViewerProps) {
         </Menu>
       </Box>
       <Stage width="100%" height="100%" cameraState={cameraState} params={{ backgroundColor: colors.panelsColor }}>
-        <Component path={makeRoute(pdbId, reduced)} reprList={reprList[reprName]} onLoad={onLoaded} onLoadFailure={loadingError} />
+        <Component
+          path={makeRoute(pdbId, reduced)}
+          reprList={reprList[reprName]}
+          onLoad={onLoaded}
+          onLoadFailure={() => showError('3D view loading failed', toast)}
+        />
       </Stage>
     </Stack>
   ) : null;
