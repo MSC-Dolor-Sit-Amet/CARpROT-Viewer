@@ -1,6 +1,6 @@
 {
   "name": "carprot-viewer",
-  "productName": "CARpROT Viewer",
+  "productName": "CARpROT_Viewer",
   "version": "0.1.0",
   "private": true,
   "main": "dist-electron/main/index.js",
