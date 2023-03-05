@@ -1,4 +1,4 @@
-var aminoAcidsTable = {
+const aminoAcidsTable = {
   A: {
     mass: 15.0234,
     pk1: 2.35,
@@ -151,28 +151,28 @@ var aminoAcidsTable = {
 };
 
 function countLetter(sequence: string) {
-  let letterCounts = new Array();
+  const letterCounts = [];
 
-  letterCounts['A'] = sequence.split('A').length - 1;
-  letterCounts['R'] = sequence.split('R').length - 1;
-  letterCounts['N'] = sequence.split('N').length - 1;
-  letterCounts['D'] = sequence.split('D').length - 1;
-  letterCounts['C'] = sequence.split('C').length - 1;
-  letterCounts['Q'] = sequence.split('Q').length - 1;
-  letterCounts['E'] = sequence.split('E').length - 1;
-  letterCounts['G'] = sequence.split('G').length - 1;
-  letterCounts['H'] = sequence.split('H').length - 1;
-  letterCounts['I'] = sequence.split('I').length - 1;
-  letterCounts['L'] = sequence.split('L').length - 1;
-  letterCounts['K'] = sequence.split('K').length - 1;
-  letterCounts['M'] = sequence.split('M').length - 1;
-  letterCounts['F'] = sequence.split('F').length - 1;
-  letterCounts['P'] = sequence.split('P').length - 1;
-  letterCounts['S'] = sequence.split('S').length - 1;
-  letterCounts['T'] = sequence.split('T').length - 1;
-  letterCounts['W'] = sequence.split('W').length - 1;
-  letterCounts['Y'] = sequence.split('Y').length - 1;
-  letterCounts['V'] = sequence.split('V').length - 1;
+  letterCounts.A = sequence.split('A').length - 1;
+  letterCounts.R = sequence.split('R').length - 1;
+  letterCounts.N = sequence.split('N').length - 1;
+  letterCounts.D = sequence.split('D').length - 1;
+  letterCounts.C = sequence.split('C').length - 1;
+  letterCounts.Q = sequence.split('Q').length - 1;
+  letterCounts.E = sequence.split('E').length - 1;
+  letterCounts.G = sequence.split('G').length - 1;
+  letterCounts.H = sequence.split('H').length - 1;
+  letterCounts.I = sequence.split('I').length - 1;
+  letterCounts.L = sequence.split('L').length - 1;
+  letterCounts.K = sequence.split('K').length - 1;
+  letterCounts.M = sequence.split('M').length - 1;
+  letterCounts.F = sequence.split('F').length - 1;
+  letterCounts.P = sequence.split('P').length - 1;
+  letterCounts.S = sequence.split('S').length - 1;
+  letterCounts.T = sequence.split('T').length - 1;
+  letterCounts.W = sequence.split('W').length - 1;
+  letterCounts.Y = sequence.split('Y').length - 1;
+  letterCounts.V = sequence.split('V').length - 1;
 
   return letterCounts;
 }
@@ -181,8 +181,8 @@ function calcMass(counts: any[], seq: string) {
   const alphamass = 56.0136;
   const h2o_mass = 18.0105;
   let mass = alphamass * seq.length + h2o_mass;
-  for (let key in counts) {
-    mass += counts[key] * aminoAcidsTable[key]['mass'];
+  for (const key in counts) {
+    mass += counts[key] * aminoAcidsTable[key].mass;
   }
   mass = mass.toFixed(4);
 
@@ -190,8 +190,8 @@ function calcMass(counts: any[], seq: string) {
 }
 
 function calcExtincionCoeficcient(counts) {
-  let ec2 = counts['W'] * aminoAcidsTable['W']['extco'] + counts['Y'] * aminoAcidsTable['Y']['extco'];
-  let ec1 = ec2 + countCysteines(counts['C']) * aminoAcidsTable['C']['extco'];
+  const ec2 = counts.W * aminoAcidsTable.W.extco + counts.Y * aminoAcidsTable.Y.extco;
+  const ec1 = ec2 + countCysteines(counts.C) * aminoAcidsTable.C.extco;
   // ec1 = ec1 + " M<sup>-1</sup> * cm<sup>-1</sup>";
   // ec2 = ec2 + " M<sup>-1</sup> * cm<sup>-1</sup>";
 
@@ -206,18 +206,18 @@ function calcIsoelectricPoint(counts: any[], sequence: string | any[]) {
   const first_res = sequence[0];
   const last_res = sequence[sequence.length - 1];
   const acids = {
-    'C-term': { count: 1, pk: aminoAcidsTable[first_res]['pk1'] },
-    D: { count: counts['D'], pk: aminoAcidsTable['D']['pk3'] },
-    E: { count: counts['E'], pk: aminoAcidsTable['E']['pk3'] },
-    C: { count: counts['C'], pk: aminoAcidsTable['C']['pk3'] },
-    Y: { count: counts['Y'], pk: aminoAcidsTable['Y']['pk3'] },
+    'C-term': { count: 1, pk: aminoAcidsTable[first_res].pk1 },
+    D: { count: counts.D, pk: aminoAcidsTable.D.pk3 },
+    E: { count: counts.E, pk: aminoAcidsTable.E.pk3 },
+    C: { count: counts.C, pk: aminoAcidsTable.C.pk3 },
+    Y: { count: counts.Y, pk: aminoAcidsTable.Y.pk3 },
   };
 
   const bases = {
-    'N-term': { count: 1, pk: aminoAcidsTable[last_res]['pk2'] },
-    K: { count: counts['K'], pk: aminoAcidsTable['K']['pk3'] },
-    R: { count: counts['R'], pk: aminoAcidsTable['R']['pk3'] },
-    H: { count: counts['H'], pk: aminoAcidsTable['H']['pk3'] },
+    'N-term': { count: 1, pk: aminoAcidsTable[last_res].pk2 },
+    K: { count: counts.K, pk: aminoAcidsTable.K.pk3 },
+    R: { count: counts.R, pk: aminoAcidsTable.R.pk3 },
+    H: { count: counts.H, pk: aminoAcidsTable.H.pk3 },
   };
 
   for (var pH = 0; pH < 13.99; pH += 0.01) {
@@ -225,7 +225,7 @@ function calcIsoelectricPoint(counts: any[], sequence: string | any[]) {
     if (c <= 0) break;
   }
 
-  let pI = pH.toFixed(2);
+  const pI = pH.toFixed(2);
   let charge = Math.round(netCharge(acids, bases, 7));
   charge = addSignum(charge);
 
@@ -233,16 +233,16 @@ function calcIsoelectricPoint(counts: any[], sequence: string | any[]) {
 }
 
 function netCharge(a, b, pH) {
-  var c = 0;
-  for (let key in a) {
-    if (a[key]['count'] > 0) {
-      c += -a[key]['count'] / (1 + Math.pow(10, a[key]['pk'] - pH));
+  let c = 0;
+  for (const key in a) {
+    if (a[key].count > 0) {
+      c += -a[key].count / (1 + 10 ** (a[key].pk - pH));
     }
   }
 
-  for (let key in b) {
-    if (b[key]['count'] > 0) {
-      c += b[key]['count'] / (1 + Math.pow(10, pH - b[key]['pk']));
+  for (const key in b) {
+    if (b[key].count > 0) {
+      c += b[key].count / (1 + 10 ** (pH - b[key].pk));
     }
   }
   c = c.toFixed(3);
@@ -251,8 +251,8 @@ function netCharge(a, b, pH) {
 
 function calcHydrophobicity(counts: any[]) {
   let hydrophobicity = 7.9;
-  for (let key in counts) {
-    hydrophobicity += counts[key] * aminoAcidsTable[key]['hydrophobicity'];
+  for (const key in counts) {
+    hydrophobicity += counts[key] * aminoAcidsTable[key].hydrophobicity;
   }
   hydrophobicity = hydrophobicity.toFixed(2);
   hydrophobicity = addSignum(hydrophobicity);
@@ -262,23 +262,27 @@ function calcHydrophobicity(counts: any[]) {
 }
 
 function addSignum(x: string | number) {
-  if (x > 0) return '+' + x;
-  else return x;
+  if (x > 0) return `+${x}`;
+  return x;
 }
 
-function updateProperties(seq: string) {
-  let letterCounts = countLetter(seq);
-  let mass = calcMass(letterCounts, seq);
-  let [pI, charge] = calcIsoelectricPoint(letterCounts, seq);
-  let [ec1, ec2] = calcExtincionCoeficcient(letterCounts);
-  let hydrophobicity = calcHydrophobicity(letterCounts);
+function getProperties(seq: string) {
+  const letterCounts = countLetter(seq);
+  const mass = calcMass(letterCounts, seq);
+  const [pI, charge] = calcIsoelectricPoint(letterCounts, seq);
+  const [ec1, ec2] = calcExtincionCoeficcient(letterCounts);
+  const hydrophobicity = calcHydrophobicity(letterCounts);
 
-  console.log('Mass: ', mass);
-  console.log('pI: ', pI);
-  console.log('Charge: ', charge);
-  console.log('Ec 1: ', ec1);
-  console.log('Ec 2: ', ec2);
-  console.log('Hydrophobicity: ', hydrophobicity);
+  const properties = [
+    { name: 'Mass', value: mass, unit: 'M⁻¹g' },
+    { name: 'Isoelectric Point', value: pI, unit: 'pH' },
+    { name: 'Charge', value: charge },
+    { name: 'Molar extinction coefficient 1', value: ec1, unit: 'M⁻¹cm⁻¹' },
+    { name: 'Molar extinction coefficient 2', value: ec2, unit: 'M⁻¹cm⁻¹' },
+    { name: 'Hydrophobicity', value: hydrophobicity, unit: 'Kcal・mol ⁻¹' },
+  ];
+
+  return properties;
 }
 
-export default updateProperties;
+export default getProperties;

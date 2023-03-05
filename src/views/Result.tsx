@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import ChainView from '../components/ChainView';
 import Viewer from '../components/Viewer';
 import ResultSequence from '../components/ResultSequence';
+import PropertiesTable from '../components/PropertiesTable';
 
 function Result() {
   const [searchParams] = useSearchParams();
@@ -29,6 +30,7 @@ function Result() {
         overflow="hidden"
       >
         <ResultSequence sequence={sequence} pdbId={pdbId} />
+        <PropertiesTable sequence={sequence} />
         <ChainView pdbId={pdbId} />
         <Viewer pdbId={pdbId} />
       </Stack>

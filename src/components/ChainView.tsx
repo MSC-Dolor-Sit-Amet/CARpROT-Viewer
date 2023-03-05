@@ -11,11 +11,11 @@ function ChainView({ pdbId }: { pdbId: pdbIdType }) {
     });
   }, [pdbId]);
 
-  return (
+  return pdbId ? (
     <Stack direction="column" spacing={4} padding="5" borderRadius="lg" minHeight="24rem" justifyContent="center" overflowX="auto">
-      {pdbId ? <div id="pfv" /> : null}
+      <div id="pfv" />
     </Stack>
-  );
+  ) : null;
 }
 
 export default ChainView;
