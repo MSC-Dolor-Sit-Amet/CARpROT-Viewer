@@ -5,7 +5,7 @@ function ResultSequence({ sequence, pdbId }) {
   return (
     <Stack direction="column" spacing={4} marginBottom={10} overflowX="auto">
       <Heading size="lg">{pdbId ? `Protein ${pdbId}` : 'Sequence'}</Heading>
-      <Code fontSize="1.2rem" userSelect="auto">
+      <Code fontSize="1.2rem" userSelect="text">
         {sequence}
       </Code>
     </Stack>
