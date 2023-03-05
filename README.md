@@ -37,8 +37,9 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 
 ## Installation
 
-- Download latest release file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
-- Run downloaded app
+- Download latest installer file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
+- Run installer
+- After installation, start installed app
 
 ## Development environment
 
