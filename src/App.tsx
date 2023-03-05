@@ -12,7 +12,6 @@ function App() {
   const btnRef = React.useRef();
 
   const [sequence, setSequence] = React.useState<sequenceType>('');
-  const handleSequenceChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setSequence(e.target.value);
 
   const [directions, setDirections] = React.useState<directionsType>({ forward: true, reverse: true });
 
@@ -35,7 +34,7 @@ function App() {
 
   const inputProps = {
     sequence,
-    handleSequenceChange,
+    setSequence,
     directions,
     setDirections,
     handleTranslate,

@@ -10,18 +10,18 @@ type resultProteinType = {
   pdbId: string | false;
 };
 
-type handleSequenceChangeType = (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-
 type handleTranslateType = () => void;
 
 type pdbIdType = string | null;
 type setPdbIdType = React.Dispatch<React.SetStateAction<pdbIdType>>;
 
+type setSequenceType = React.Dispatch<React.SetStateAction<sequenceType>>;
+
 interface InputProps {
   sequence: sequenceType;
   directions: directionsType;
   setDirections: setDirectionsType;
-  handleSequenceChange: handleSequenceChangeType;
+  setSequence: setSequenceType;
   handleTranslate: handleTranslateType;
 }
 
@@ -30,4 +30,4 @@ interface OutputProps {
   setPdbId: setPdbIdType;
 }
 
-export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinType, pdbIdType, setPdbIdType };
+export type { InputProps, OutputProps, sequenceType, directionsType, resultProteinType, pdbIdType, setPdbIdType, setSequenceType };
