@@ -6,6 +6,8 @@ CARpROT as an application written for the [Motorola Science Cup 2023](https://sc
 
 ## Fetures
 
+- Translates DNA and RNA to amino acids
+- Finds proteins based on peptide chains
 - Calculates properties of proteins:
   - Mass
   - Charge
