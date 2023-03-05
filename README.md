@@ -91,4 +91,4 @@ yarn dev
 
 ## Credits
 
-Logo designed by [pch.vector](https://www.freepik.com/author/pch-vector) and [Bakar015](https://www.freepik.com/author/bakar015) / Freepik
+Parts of logo designed by [pch.vector](https://www.freepik.com/author/pch-vector) and [Bakar015](https://www.freepik.com/author/bakar015) / Freepik
