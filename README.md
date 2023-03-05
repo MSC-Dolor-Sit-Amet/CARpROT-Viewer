@@ -1,13 +1,13 @@
 <div style="display: inline-flex; align-items: center">
-  <img style="height: 15vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
   <img style="height: 15vh" src="./public/logoWithText.png">
+  <img style="height: 15vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
 </div>
 
 # CARpROT Viewer
 
 CARpROT is an application written for the [Motorola Science Cup 2023](https://science-cup.pl/) competition.
 
-## Fetures
+## Features
 
 - Translates DNA and RNA to amino acids
 - Finds proteins based on peptide chains
@@ -37,7 +37,8 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 
 ## Installation
 
-TODO
+- Download latest release file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
+- Run downloaded app
 
 ## Usage
 
