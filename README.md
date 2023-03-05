@@ -12,7 +12,7 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 
 - Translates DNA and RNA to amino acids
 - Finds proteins based on peptide chains
-- Calculates properties of proteins:
+- Calculates properties of peptides:
   - Length
   - Chemical formula
   - Mass
@@ -42,7 +42,11 @@ TODO
 
 ## Usage
 
-TODO
+1. Click on the input button to open input drawer
+2. Enter DNA/RNA sequence or import it from a file
+3. Click save
+4. Choose a peptide from the list (you can filter out all non-protein peptides by using toggle switches)
+5. If a selected peptide is a protein found in **RCSB PDB** a features chart and a 3D model will be displayed, otherwise only peptide properties and a 2D image will be displayed
 
 ## How it works
 
