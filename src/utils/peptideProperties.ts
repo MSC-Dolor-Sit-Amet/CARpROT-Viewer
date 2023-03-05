@@ -204,32 +204,32 @@ function calcIsoelectricPoint(counts: any[], sequence: string | any[]) {
   };
 
   for (var pH = 0; pH < 13.99; pH += 0.01) {
-    const c = netCharge(acids, bases, pH);
-    if (c <= 0) break;
+    const charge = netCharge(acids, bases, pH);
+    if (charge <= 0) break;
   }
 
-  const pI = pH.toFixed(2);
+  const Ip = pH.toFixed(2);
   let charge = Math.round(netCharge(acids, bases, 7));
   charge = addSignum(charge);
 
-  return [pI, charge];
+  return [Ip, charge];
 }
 
-function netCharge(a, b, pH) {
-  let c = 0;
-  for (const key in a) {
-    if (a[key].count > 0) {
-      c += -a[key].count / (1 + 10 ** (a[key].pk - pH));
+function netCharge(acid, base, pH) {
+  let charge = 0;
+  for (const key in acid) {
+    if (acid[key].count > 0) {
+      charge += -acid[key].count / (1 + 10 ** (acid[key].pk - pH));
     }
   }
 
-  for (const key in b) {
-    if (b[key].count > 0) {
-      c += b[key].count / (1 + 10 ** (pH - b[key].pk));
+  for (const key in base) {
+    if (base[key].count > 0) {
+      charge += base[key].count / (1 + 10 ** (pH - base[key].pk));
     }
   }
-  c = c.toFixed(3);
-  return c;
+  charge = charge.toFixed(3);
+  return charge;
 }
 
 function calcHydrophobicity(counts: any[]) {
@@ -251,13 +251,13 @@ function addSignum(x: string | number) {
 function getProperties(seq: string) {
   const letterCounts = countLetter(seq);
   const mass = calcMass(letterCounts, seq);
-  const [pI, charge] = calcIsoelectricPoint(letterCounts, seq);
+  const [Ip, charge] = calcIsoelectricPoint(letterCounts, seq);
   const [ec1, ec2] = calcExtincionCoefficient(letterCounts);
   const hydrophobicity = calcHydrophobicity(letterCounts);
 
   const properties = [
     { name: 'Mass', value: mass, unit: 'M⁻¹g' },
-    { name: 'Isoelectric Point', value: pI, unit: 'pH' },
+    { name: 'Isoelectric Point', value: Ip, unit: 'pH' },
     { name: 'Charge', value: charge },
     { name: 'Molar extinction coefficient 1', value: ec1, unit: 'M⁻¹cm⁻¹' },
     { name: 'Molar extinction coefficient 2', value: ec2, unit: 'M⁻¹cm⁻¹' },
