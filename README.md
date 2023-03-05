@@ -1,6 +1,6 @@
-<div style="display: inline-flex; align-items: center">
-  <img style="height: 15vh" src="./public/logoWithText.png">
-  <img style="height: 15vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
+<div style="display: inline-flex; align-items: center; flex-wrap: nowrap">
+  <img style="height: 10vh" src="./public/logoWithText.png">
+  <img style="height: 10vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
 </div>
 
 # CARpROT Viewer
