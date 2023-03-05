@@ -151,28 +151,13 @@ const aminoAcidsTable = {
 };
 
 function countLetter(sequence: string) {
-  const letterCounts = [];
+  const letterCounts = {};
 
-  letterCounts.A = sequence.split('A').length - 1;
-  letterCounts.R = sequence.split('R').length - 1;
-  letterCounts.N = sequence.split('N').length - 1;
-  letterCounts.D = sequence.split('D').length - 1;
-  letterCounts.C = sequence.split('C').length - 1;
-  letterCounts.Q = sequence.split('Q').length - 1;
-  letterCounts.E = sequence.split('E').length - 1;
-  letterCounts.G = sequence.split('G').length - 1;
-  letterCounts.H = sequence.split('H').length - 1;
-  letterCounts.I = sequence.split('I').length - 1;
-  letterCounts.L = sequence.split('L').length - 1;
-  letterCounts.K = sequence.split('K').length - 1;
-  letterCounts.M = sequence.split('M').length - 1;
-  letterCounts.F = sequence.split('F').length - 1;
-  letterCounts.P = sequence.split('P').length - 1;
-  letterCounts.S = sequence.split('S').length - 1;
-  letterCounts.T = sequence.split('T').length - 1;
-  letterCounts.W = sequence.split('W').length - 1;
-  letterCounts.Y = sequence.split('Y').length - 1;
-  letterCounts.V = sequence.split('V').length - 1;
+  const lettersList = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'];
+
+  for (let i = 0; i < lettersList.length; i++) {
+    letterCounts[lettersList[i]] = sequence.split(lettersList[i]).length - 1;
+  }
 
   return letterCounts;
 }
@@ -189,11 +174,9 @@ function calcMass(counts: any[], seq: string) {
   return mass;
 }
 
-function calcExtincionCoeficcient(counts) {
+function calcExtincionCoefficient(counts) {
   const ec2 = counts.W * aminoAcidsTable.W.extco + counts.Y * aminoAcidsTable.Y.extco;
   const ec1 = ec2 + countCysteines(counts.C) * aminoAcidsTable.C.extco;
-  // ec1 = ec1 + " M<sup>-1</sup> * cm<sup>-1</sup>";
-  // ec2 = ec2 + " M<sup>-1</sup> * cm<sup>-1</sup>";
 
   return [ec1, ec2];
 }
@@ -256,7 +239,6 @@ function calcHydrophobicity(counts: any[]) {
   }
   hydrophobicity = hydrophobicity.toFixed(2);
   hydrophobicity = addSignum(hydrophobicity);
-  // hydrophobicity = hydrophobicity + ' Kcal * mol <sup>-1</sup>';
 
   return hydrophobicity;
 }
@@ -270,7 +252,7 @@ function getProperties(seq: string) {
   const letterCounts = countLetter(seq);
   const mass = calcMass(letterCounts, seq);
   const [pI, charge] = calcIsoelectricPoint(letterCounts, seq);
-  const [ec1, ec2] = calcExtincionCoeficcient(letterCounts);
+  const [ec1, ec2] = calcExtincionCoefficient(letterCounts);
   const hydrophobicity = calcHydrophobicity(letterCounts);
 
   const properties = [
