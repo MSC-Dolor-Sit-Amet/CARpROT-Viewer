@@ -1,6 +1,6 @@
 <div style="display: inline-flex; align-items: center">
-  <img style="height: 15vh" src="./public/logoWithText.png">
-  <img style="height: 15vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
+  <img style="height: 10vh" src="./public/logoWithText.png">
+  <img style="height: 10vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
 </div>
 
 # CARpROT Viewer
@@ -37,8 +37,9 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 
 ## Installation
 
-- Download latest release file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
-- Run downloaded app
+- Download latest installer file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
+- Run installer
+- After installation, start installed app
 
 ## Development environment
 
@@ -91,4 +92,4 @@ yarn dev
 
 ## Credits
 
-Logo designed by [pch.vector](https://www.freepik.com/author/pch-vector) and [Bakar015](https://www.freepik.com/author/bakar015) / Freepik
+Parts of logo designed by [pch.vector](https://www.freepik.com/author/pch-vector) and [Bakar015](https://www.freepik.com/author/bakar015) / Freepik
