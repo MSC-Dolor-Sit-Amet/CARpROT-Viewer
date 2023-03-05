@@ -1,6 +1,6 @@
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import getProperties from '../utils/peptideProperties';
+import getProperties from '../utils/properties/peptideProperties';
 
 function PropertiesTable({ sequence }) {
   const [properties, setProperies] = React.useState([]);
