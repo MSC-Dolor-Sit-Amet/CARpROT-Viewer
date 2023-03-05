@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import * as codonsDict from './codons.json';
 import { directionsType } from '../types/InputOutputProps';
 import getProteinName from './api';
