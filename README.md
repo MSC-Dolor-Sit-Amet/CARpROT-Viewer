@@ -1,8 +1,10 @@
 ![](https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png)
 
-# CARpROT Viewer
 
-![](./public/icon.svg)
+
+![](./public/logoWithText.png)
+
+# CARpROT Viewer
 
 CARpROT is an application written for the [Motorola Science Cup 2023](https://science-cup.pl/) competition.
 
@@ -20,7 +22,7 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
   - Hydrophobicity
 - Displays protein features using [RCSB Saguaro](https://github.com/rcsb/rcsb-saguaro)
 - Displays 3D structure of proteins found in [RCSB PDB](https://www.rcsb.org/)
-- Displays 2D skeletal structure of peptides fetched form [PepDraw](https://www2.tulane.edu/~biochem/WW/PepDraw/)
+- Displays 2D skeletal structure of peptides requested form [PepDraw](https://www2.tulane.edu/~biochem/WW/PepDraw/)
 
 ## Technologies:
 
@@ -45,9 +47,9 @@ TODO
 ## How it works
 
 1. DNA is translated to amino acids
-2. From sequence of amino acids we select substrings that start with 'M' (start) and end with '-' (end)
-3. All found peptides are cross-checked with **RCSB PDB** database for a matching protein
-4. All peptides are displayed with option of filtering proteins found in **RCSB PDB**
+2. From sequence of amino acids program selects substrings that start with 'M' (start) and end with '-' (end)
+3. All found peptides are cross-checked with the **RCSB PDB** database for a matching protein
+4. All peptides are displayed with option of filtering proteins found in the **RCSB PDB**
 5. When a peptide is selected:
    1. Its properties are calculated
    2. An image from PepDraw is requested
