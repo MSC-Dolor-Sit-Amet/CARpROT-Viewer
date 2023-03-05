@@ -2,7 +2,7 @@
 
 # CARpROT Viewer
 
-CARpROT as an application written for the [Motorola Science Cup 2023](https://science-cup.pl/) competition.
+CARpROT is an application written for the [Motorola Science Cup 2023](https://science-cup.pl/) competition.
 
 ## Fetures
 
@@ -14,8 +14,8 @@ CARpROT as an application written for the [Motorola Science Cup 2023](https://sc
   - Isoelectric Point
   - Hydrophobicity
   - Extinction Coefficient
-- Display protein features using [RCSB Saguaro](https://github.com/rcsb/rcsb-saguaro)
-- Display 3D structure of proteins found in [RCSB PDB](https://www.rcsb.org/)
+- Displays protein features using [RCSB Saguaro](https://github.com/rcsb/rcsb-saguaro)
+- Displays 3D structure of proteins found in [RCSB PDB](https://www.rcsb.org/)
 
 ## Technologies:
 
@@ -33,6 +33,4 @@ TODO
 
 ## Usage
 
-1. Enter DNA sequence
-2. Choose protein/peptide
-3. Enjoy
+TODO
