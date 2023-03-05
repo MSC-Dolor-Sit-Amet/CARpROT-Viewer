@@ -35,6 +35,34 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 - [RCSB Saguaro](https://github.com/rcsb/rcsb-saguaro) for displaying charts of protein features
 - [PepDraw](https://www2.tulane.edu/~biochem/WW/PepDraw/) for getting 2D images
 
+## Development environment
+
+##### [Node.js](https://nodejs.org/en/) is required to run the app
+
+1. install dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+2. run app
+
+```bash
+npm dev
+```
+
+or
+
+```bash
+yarn dev
+```
+
 ## Installation
 
 - Download latest release file (.exe) [here](https://github.com/MSC-Dolor-Sit-Amet/app/releases/latest)
