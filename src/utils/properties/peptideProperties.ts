@@ -2,6 +2,7 @@ import { calcHydrophobicity } from './calcHydrophobicity';
 import { calcIsoelectricPoint } from './calcIsoelectricPoint';
 import { calcMass } from './calcMass';
 import { calcExtCo } from './calcExtCo';
+import { calcChemForm } from './calcChemForm';
 
 export const aminoAcidsTable = {
   A: {
@@ -169,6 +170,7 @@ function countLetter(sequence: string) {
 
 function getProperties(seq: string) {
   const letterCounts = countLetter(seq);
+  const chemForm = calcChemForm(letterCounts);
   const mass = calcMass(letterCounts, seq);
   const [Ip, charge] = calcIsoelectricPoint(letterCounts, seq);
   const [ec1, ec2] = calcExtCo(letterCounts);
@@ -177,6 +179,7 @@ function getProperties(seq: string) {
 
   const properties = [
     { name: 'Chain length', value: lengthCount},
+    { name: 'Chemical formula', value: chemForm},
     { name: 'Mass', value: mass, unit: 'M⁻¹・g' },
     { name: 'Isoelectric Point', value: Ip, unit: 'pH' },
     { name: 'Charge', value: charge },

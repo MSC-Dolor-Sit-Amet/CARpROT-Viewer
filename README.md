@@ -9,11 +9,13 @@ CARpROT is an application written for the [Motorola Science Cup 2023](https://sc
 - Translates DNA and RNA to amino acids
 - Finds proteins based on peptide chains
 - Calculates properties of proteins:
+  - Length
+  - Chemical formula
   - Mass
-  - Charge
   - Isoelectric Point
-  - Hydrophobicity
+  - Charge
   - Extinction Coefficient
+  - Hydrophobicity
 - Displays protein features using [RCSB Saguaro](https://github.com/rcsb/rcsb-saguaro)
 - Displays 3D structure of proteins found in [RCSB PDB](https://www.rcsb.org/)
 
