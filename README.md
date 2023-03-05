@@ -1,7 +1,7 @@
-<p float=left>
-<img src = https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png>
-<img src = ./public/logoWithText.png>
-</p>
+<div style="display: inline-flex; align-items: center">
+  <img style="height: 15vh" src="https://science-cup.pl/wp-content/uploads/2020/03/Youngineers-06.png">
+  <img style="height: 15vh" src="./public/logoWithText.png">
+</div>
 
 # CARpROT Viewer
 
