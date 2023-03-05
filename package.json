@@ -2,11 +2,18 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "dist-electron/main/index.js",
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
+    "pree2e": "vite build --mode=test",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -25,13 +32,22 @@
     "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "electron": "^23.1.2",
+    "electron-builder": "^23.6.0",
     "eslint": "^8.32.0",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0",
     "prettier": "^2.8.3",
     "typescript": "^4.9.3",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "vite-electron-plugin": "^0.8.2",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.12.1"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
   }
 }
