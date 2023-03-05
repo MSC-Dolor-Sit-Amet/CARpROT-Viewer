@@ -38,7 +38,7 @@ function SequenceDropZone({ setSequence, children }: { setSequence: SetSequenceT
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <input {...getInputProps()} />
       {children}
-      <Text color="gray.500" display="inline-block">
+      <Text color="gray.500" display="inline-block" marginTop="1rem">
         You can drag &apos;n&apos; drop sequence file onto text area or click&nbsp;
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <Button onClick={open} size="xs" paddingY="0" fontSize="1rem">
