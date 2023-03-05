@@ -24,9 +24,9 @@ function PropertiesTable({ sequence }: { sequence: string }) {
         <Tbody>
           {properties.map(prop => (
             <Tr key={prop.name}>
-              <Td>{prop.name}</Td>
-              <Td>{prop.value}</Td>
-              <Td>{prop.unit}</Td>
+              <Td userSelect="text">{prop.name}</Td>
+              <Td userSelect="text">{prop.value}</Td>
+              <Td userSelect="text">{prop.unit}</Td>
             </Tr>
           ))}
         </Tbody>
